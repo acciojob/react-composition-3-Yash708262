@@ -4,16 +4,28 @@ import Tooltip from "./Tooltip";
 const Tooltip = ({ text, children }) => {
   const [show, setShow] = useState(false);
 
-  // Clone the child to inject the hover listeners and the tooltip div
+  const handleMouseEnter = (e) => {
+    setShow(true);
+    if (children.props.onMouseEnter) {
+      children.props.onMouseEnter(e);
+    }
+  };
+
+  const handleMouseLeave = (e) => {
+    setShow(false);
+    if (children.props.onMouseLeave) {
+      children.props.onMouseLeave(e);
+    }
+  };
+
   return React.cloneElement(children, {
-    className: "tooltip",
-    onMouseEnter: () => setShow(true),
-    onMouseLeave: () => setShow(false),
-    // We nest the tooltip div INSIDE the cloned child
+    className: `tooltip ${children.props.className || ""}`,
+    onMouseEnter: handleMouseEnter,
+    onMouseLeave: handleMouseLeave,
     children: (
       <>
         {children.props.children}
-        {show && <div className="tooltiptext">{text}</div>}
+        {show && <div>{text}</div>}
       </>
     ),
   });
