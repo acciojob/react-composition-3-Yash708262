@@ -12,7 +12,7 @@ const App = () => {
 
       <br /><br />
 
-      <Tooltip text="Hello from tooltip">
+      <Tooltip text="This is another tooltip">
         <p>Hover over this text</p>
       </Tooltip>
     </div>
