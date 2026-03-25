@@ -6,17 +6,12 @@ const Tooltip = ({ text, children }) => {
   const handleMouseEnter = () => setShow(true);
   const handleMouseLeave = () => setShow(false);
 
-  return React.cloneElement(children, {
-    className: `tooltip ${children.props.className || ""}`,
-    onMouseOver: handleMouseEnter,
-    onMouseOut: handleMouseLeave,
-    children: (
-      <>
-        {children.props.children}
-        {show && <div>{text}</div>}
-      </>
-    ),
-  });
+  return(
+     <div className="tooltip" onMouseEnter={handleMouseEnter} onMouseLeave={handleMouseLeave}>
+      {children}
+      {show && <div className="tooltiptext">{text}</div>}
+    </div>
+  )
 };
 
 export default Tooltip;
