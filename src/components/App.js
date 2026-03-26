@@ -4,11 +4,11 @@ import Tooltip from "./Tooltip";
 function App() {
   return (
     <div>
-      <Tooltip text="this is tooltip">
+      <Tooltip text="This is tooltip">
         <h2 className="tooltip">Hover over me</h2>
       </Tooltip>
 
-      <Tooltip text="this is another tooltip">
+      <Tooltip text="This is another tooltip">
         <p className="tooltip">Hover over me to see another tooltip</p>
       </Tooltip>
     </div>
